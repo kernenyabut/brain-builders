@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BrainBuilder.Models.Games>
+    @{
+        ViewData["Title"] = "Games";
+    }
+    <header class="py-5"></header>
+    <section>
+        <div class="container">
+            <h1>@ViewData["Title"]</h1>
+            @foreach (var item in Model)
+            {
+                <div class="row clearfix">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="boxs game_widget">
+                            <div class="gw_img col">
+                                <img class="img-responsive" src="~/img/card04.png" alt=" @item.Name">
+                            </div>
+                            <div class="gw_content col">
+                                <div class="gw_header">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </h4>
+                                    <a asp-action="Details" id="btnPlayGame" asp-controller="Games" asp-route-id="@item.GameId" class="btn btn-secondary btn-block">Play Now</a>
+                                </div>
+                                <div class="gw_meta">
+                                    <h6>Description</h6>
+                                    <small class="text-muted">@Html.DisplayFor(modelItem => item.Description)</small>
+                                    <h6>Date Released</h6>
+                                    <small class="text-muted">@Html.DisplayFor(modelItem => item.DatePublished)</small>
+                                    <h6>Instructions</h6>
+                                    <small class="text-muted">@Html.DisplayFor(modelItem => item.Instructions)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </section>

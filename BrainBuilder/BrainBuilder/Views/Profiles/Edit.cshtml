@@ -1,0 +1,114 @@
+﻿@model BrainBuilder.Models.Profiles
+@using Microsoft.AspNetCore.Identity
+
+@{
+    string avatarLink = "https://avatars.dicebear.com/api/identicon/" + ViewData["Avatar"] + ".svg";
+    ViewData["Title"] = "Edit";
+}
+
+<header class="py-5"></header>
+<section>
+    <div class="container">
+        <h4>Edit your Profile</h4>
+
+        <form asp-action="Edit" id="frmEditProfile" onsubmit="return DSValidation();">
+            <input type="hidden" asp-for="Id" />
+            <div class="row gutters-sm">
+
+                <div class="col-md-4 mb-3">
+                    <div id="cardProfileHeader" class="profileCard">
+                        <div class="profileCard-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="@avatarLink" alt="@Html.DisplayFor(model => model.DisplayName)" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <label asp-for="DisplayName" class="control-label"></label>
+                                    <input asp-for="DisplayName" id="txtDisplayName" class="form-control" />
+                                    <span id="txtDisplayName-error" asp-validation-for="DisplayName" class="text-danger"></span>
+                                    <label asp-for="Motto" class="control-label"></label>
+                                    <textarea asp-for="Motto" id="txtMotto" class="form-control"></textarea>
+                                    <span id="txtMotto-error" asp-validation-for="Motto" class="text-danger"></span>
+                                    <br />
+                                    <a asp-action="Details" id="btnCancelEdit" asp-controller="Profiles" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Save" id="btnSave" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div id="cardProfileInformation" class="profileCard mb-3">
+                        <div class="profileCard-body">
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Bio</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <label asp-for="Bio" class="control-label"></label>
+                                    <textarea asp-for="Bio" id="txtBio" class="form-control"></textarea>
+                                    <span asp-validation-for="Bio" id="txtBio-error" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Province</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <label asp-for="ProvinceCode" class="control-label"></label>
+                                    <select id="ProvinceDropDown" asp-for="ProvinceCode" class="form-control" asp-items="ViewBag.Provinces"></select>
+                                    <span id="ProvinceDropDown-error" asp-validation-for="ProvinceCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">I was born on...</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <label asp-for="BirthDate" class="control-label"></label>
+                                    <input id="txtBirthDate" asp-for="BirthDate" class="form-control" />
+                                    <span id="txtBirthDate-error" asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Gender</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <label asp-for="Gender" class="control-label"></label>
+                                    <select id="GenderDropDown" asp-for="Gender" class="form-control" asp-items="ViewBag.Genders"></select>
+                                    <span id="GenderDropDown-error" asp-validation-for="Gender" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+@section Scripts {
+
+    <script type="text/javascript">
+        //Validates few validatable fields
+        function DSValidation() {
+            var noErrors = true;
+            //declare variables for input and error field
+            var displayName = document.getElementById('txtDisplayName').value;
+            var displayNameError = document.getElementById('txtDisplayName-error');
+
+            if (displayName == null || displayName.trim() == "") {
+                displayNameError.innerHTML = "Display Name cannot be empty";
+                noErrors = false;
+            }
+            else {
+                displayName.innerHTML = "";
+            }
+
+            return noErrors;
+        }
+    </script>
+}

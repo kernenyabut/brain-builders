@@ -1,0 +1,33 @@
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.dll
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.pdb
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\nunit.engine.dll
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\nunit.engine.api.dll
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\nunit.engine.core.dll
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.deps.json
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.runtimeconfig.json
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.runtimeconfig.dev.json
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.dll
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.pdb
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.csprojAssemblyReference.cache
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.AssemblyInfoInputs.cache
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.AssemblyInfo.cs
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.csproj.CoreCompileInputs.cache
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.dll
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.pdb
+C:\Users\jamie\Source\Repos\brain-builders-games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.genruntimeconfig.cache
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.dll
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.pdb
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\nunit.engine.dll
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\nunit.engine.api.dll
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\nunit.engine.core.dll
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.deps.json
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.runtimeconfig.json
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.runtimeconfig.dev.json
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.dll
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\bin\Debug\netcoreapp2.2\BrainBuilderTest.pdb
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.csprojAssemblyReference.cache
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.csproj.CoreCompileInputs.cache
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.AssemblyInfoInputs.cache
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.AssemblyInfo.cs
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.dll
+C:\Users\Minec\source\repos\Brain Builders Games\BrainBuilder\BrainBuilderTest\obj\Debug\netcoreapp2.2\BrainBuilderTest.pdb

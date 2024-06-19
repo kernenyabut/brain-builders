@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Home Page";
+}
+<header class="py-5"></header>
+<section>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <div class="row align-items-center ">
+            <div class="col card">
+                <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Add New Employee</a>
+            </div>
+        </div>
+        <div class="row align-items-center ">
+            <br />
+            <div class="col card">
+                <a asp-action="ListRole" asp-controller="Admin" class="btn btn-primary">Role Information</a>
+            </div>
+        </div>
+    </div>
+</section>

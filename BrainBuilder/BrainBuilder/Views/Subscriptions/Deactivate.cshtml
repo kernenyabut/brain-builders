@@ -1,0 +1,42 @@
+﻿@model BrainBuilder.Controllers.SubscriptionsController.InputModel
+
+@{
+    ViewData["Title"] = "Deactivate";
+}
+
+<header class="py-5 "></header>
+<section>
+    <div class="container  pb-5 mb-2">
+        <h1>@ViewData["Title"]</h1>
+        <div id="cardPurchase" class="d-md-flex justify-content-between cart-item">
+            <div class="px-3 my-3">
+                <h4>
+                    @Html.DisplayFor(model => model.SubscriptionName)
+                </h4>
+            </div>
+            <div class="px-3 my-3 text-center">
+                <div class="cart-item-label"><b>Account Name</b></div>
+                <span class="text-xl font-weight-medium">@Html.DisplayFor(model => model.Account.Username)</span>
+            </div>
+            <div class="px-3 my-3 text-center">
+                <div class="cart-item-label"><b>Billing Type</b></div>
+                <span class="text-xl font-weight-medium">@Html.DisplayFor(model => model.BillingTypeName)</span>
+            </div>
+            <div class="px-3 my-3 text-center">
+                <div class="cart-item-label"><b>Price</b></div><span class="text-xl font-weight-medium">$@Html.DisplayFor(model => model.Price)</span>
+            </div>
+        </div>
+        <form id="frmDeactivate" asp-action="Deactivate"></form>
+        <hr class="my-2">
+        <div class="row pt-3 pb-5 mb-2">
+            <div class="col-sm-6 mb-3">
+                <a id="btnReturntoSubscription" class="btn btn-style-1 btn-secondary btn-block" asp-action="Index">Return to Subscription</a>
+            </div>
+            <div class="col-sm-6 mb-3"><input id="btnDeactivate" class="btn btn-style-1 btn-primary btn-block" type="submit" name="submitButton" form="frmDeactivate" value="Deactivate" /></div>
+
+        </div>
+    </div>
+</section>
+
+
+

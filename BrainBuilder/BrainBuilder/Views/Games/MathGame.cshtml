@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Math Game";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/MathGameStyles.css" />
+</head>
+<body class="mathpage">
+    <div id="gameContainer">
+        <section class="mathGame">
+            <div>
+                <p id="gameNotifications">Try to answer as many as you can in one minute!</p>
+                <input type="text" class="gamePiece" id="gameNumberOne" readonly />
+                <input type="text" class="gamePiece" id="gameOperator" readonly />
+                <input type="text" class="gamePiece" id="gameNumberTwo" readonly />
+
+                <input type="text" class="gamePiece" id="userAnswer">
+                <br />
+                <br />
+            </div>
+            <div>
+                <label>Rounds Won:</label><br />
+                <input type="text" id="gameRounds" disabled /><br />
+                <label>Time Left:</label><br />
+                <input type="text" id="gameTime" disabled />
+                <br />
+            </div>
+            <div>
+                <button id="gameStartBtn" class="gameBtn" onclick="StartGame()">New Game</button>
+                <button id="gameSubmitBtn" class="gameBtn" onclick="SubmitScore()" style="visibility: hidden;">Submit score</button>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="~/js/mathGame.js"></script>

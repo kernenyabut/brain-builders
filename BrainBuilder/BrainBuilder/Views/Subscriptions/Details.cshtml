@@ -1,0 +1,82 @@
+﻿@model BrainBuilder.Controllers.SubscriptionsController.InputModel
+
+@{
+    ViewData["Title"] = "Purchase";
+    int creditCards = (int)ViewData["CreditCardSize"];
+}
+
+<header class="py-5 "></header>
+<section>
+    <div class="container  pb-5 mb-2">
+        <h1>@ViewData["Title"]</h1>
+        <div id="cardPurchase" class="d-md-flex justify-content-between cart-item">
+            <div class="px-3 my-3">
+                <h4>
+                    @Html.DisplayFor(model => model.SubscriptionName)
+                </h4>
+            </div>
+            <div class="px-3 my-3 text-center">
+                <div class="cart-item-label"><b>Account Name</b></div>
+                <span class="text-xl font-weight-medium">@Html.DisplayFor(model => model.Account.Username)</span>
+            </div>
+            <div class="px-3 my-3 text-center">
+                <div class="cart-item-label"><b>Billing Type</b></div>
+                <span class="text-xl font-weight-medium">@Html.DisplayFor(model => model.BillingTypeName)</span>
+            </div>
+            <div class="px-3 my-3 text-center">
+                <div class="cart-item-label"><b>Price</b></div><span class="text-xl font-weight-medium">$@Html.DisplayFor(model => model.Price)</span>
+            </div>
+        </div>
+        @if (creditCards > 0)
+        {
+         <div id="card-creditCard" class="d-md-flex justify-content-between cart-item">
+             <div class="row">
+                 <div class="col"><h4>Credit Card</h4></div>
+             </div>
+            <br />
+
+            <form id="frmPurchase" asp-action="Purchase">
+                <input hidden asp-for="Account" value="@Model.Account" />
+                <input hidden asp-for="AccountId" value="@Model.AccountId" />
+                <input hidden asp-for="Subscription" value="@Model.Subscription" />
+                <input hidden asp-for="BillingType" value="@Model.BillingType" />
+                <input hidden asp-for="Price" value="@Model.Price" />
+
+                <div>
+                    <div class="row">
+                        <div class="form-group col-sm-9">
+                            <label asp-for="CardNumber" class="control-label"></label>
+                            <select asp-for="CardNumber" id="optCardCode" class="form-control" asp-items="ViewBag.CreditCard"></select>
+                        </div>
+
+                        <div class="form-group  col-md-4">
+                            <label asp-for="SecurityCode" class="control-label"></label>
+                            <input asp-for="SecurityCode" id="txtSecurityCode" maxlength="3" class="form-control" placeholder="000" />
+                            <span id="txtSecurityCode-error" asp-validation-for="SecurityCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+         </div>
+            <hr class="my-2">
+            <div class="row pt-3 pb-5 mb-2">
+                <div class="col-sm-6 mb-3"><a id="btnReturntoSubscription" class="btn btn-style-1 btn-secondary btn-block" asp-action="Index">Return to Subscription</a></div>
+                <div class="col-sm-6 mb-3"><input id="btnPurchase" class="btn btn-style-1 btn-primary btn-block" type="submit" value="Submit" form="frmPurchase" /> </div>
+            </div>
+        }
+        else
+        {
+            <div id="card-creditCard" class="d-md-flex justify-content-between cart-item">
+                <div class="row">
+                    <h6>Please add a valid credit card to continue</h6>
+                </div>
+            </div>
+            <hr class="my-2">
+            <div class="row pt-3 pb-5 mb-2">
+                <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-secondary btn-block" asp-action="Index">Return to Subscription</a></div>
+                <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-primary btn-block" asp-area="Identity" id="btnCheckout-addcreditcard" asp-page="/Account/Manage/CreditCard">Add a Credit Card</a></div>
+            </div>
+        }
+    </div>
+</section>
+

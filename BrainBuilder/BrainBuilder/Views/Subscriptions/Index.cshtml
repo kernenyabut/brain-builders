@@ -1,0 +1,396 @@
+﻿
+@model IEnumerable<BrainBuilder.Models.Subscriptions>
+@{
+    ViewData["Title"] = "Subscriptions";
+    string membership = ViewData["subscription"].ToString();
+    string trialEnded = ViewData["trialEnded"].ToString();
+    string isActive = ViewData["isActive"].ToString();
+}
+<header class="py-5"></header>
+<section>
+    <div class="container">
+        <div class="container p-0">
+
+            <h1 class="h3 mb-3 text-center">Plans &amp; Pricing</h1>
+
+            <div class="row">
+                <div class="col-md-10 col-xl-8 mx-auto">
+                    <h1 class="text-center">Build your brain to the next level</h1>
+                    <div class="row justify-content-center mt-3 mb-2">
+                        <div class="col-auto">
+                            <nav class="nav btn-group">
+                                <a href="#monthly" class="btn btn-outline-primary active" data-toggle="tab">Monthly billing</a>
+                                <a href="#annual" class="btn btn-outline-primary" data-toggle="tab">Annual billing</a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="monthly">
+                            <div class="row py-4">
+                                <div class="col-sm-4 mb-3 mb-md-0">
+                                    <div class="card text-center h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="mb-4">
+                                                <h5>Basic</h5>
+                                                <span class="display-4">$0</span>
+                                            </div>
+                                            <h6>Includes:</h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    Basic access to our games
+                                                </li>
+                                                <li class="mb-2">
+                                                    No highscore access
+                                                </li>
+                                                <li class="mb-2">
+                                                    No customizable profile
+                                                </li>
+                                                <li class="mb-2">
+                                                    No achievements
+                                                </li>
+                                                <li class="mb-2">
+                                                    No stats
+                                                </li>
+                                            </ul>
+                                            <div class="mt-auto">
+                                                @{
+                                                    if (membership == "None")
+                                                    {
+                                                        <p id="txtSubscribe-CurrentMembership" class="btn btn-lg btn-outline-primary text-muted">Current membership</p>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-md-0">
+                                    <div class="card text-center h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="mb-4">
+                                                <h5>Membership</h5>
+                                                <span class="display-4">$0</span>
+                                                <span class="mb-2">(Requires login)</span>
+                                            </div>
+                                            <h6>Includes:</h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    Access to our games
+                                                </li>
+                                                <li class="mb-2">
+                                                    1 week early access to new games
+                                                </li>
+                                                <li class="mb-2">
+                                                    Highscores
+                                                </li>
+                                                <li class="mb-2">
+                                                    A customizable profile
+                                                </li>
+                                                <li class="mb-2">
+                                                    Achievements
+                                                </li>
+                                                <li class="mb-2">
+                                                    Basic stats on your performance
+                                                </li>
+                                            </ul>
+                                            <div class="mt-auto">
+                                                @{
+                                                    if (membership == "None")
+                                                    {
+                                                        <a id="btnSubscribe-Register" asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg btn-primary">Sign up for free</a>
+                                                    }
+                                                    else if (membership == "Membership")
+                                                    {
+                                                        <p id="txtSubscribe-CurrentMembership" class="btn btn-lg btn-outline-primary text-muted">Current membership</p>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-md-0">
+                                    <div class="card text-center h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="mb-4">
+                                                <h5>Membership+</h5>
+                                                <span class="display-4">$9.99</span>
+                                                <span>/mo</span>
+                                            </div>
+                                            <h6>Includes:</h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    Access to our games
+                                                </li>
+                                                <li class="mb-2">
+                                                    2 week early access to new games
+                                                </li>
+                                                <li class="mb-2">
+                                                    Exclusive games
+                                                </li>
+                                                <li class="mb-2">
+                                                    Highscores
+                                                </li>
+                                                <li class="mb-2">
+                                                    A customizable profile with additional features
+                                                </li>
+                                                <li class="mb-2">
+                                                    Achievements
+                                                </li>
+                                                <li class="mb-2">
+                                                    Enhanced stats on your performance
+                                                </li>
+                                                <li class="mb-2">
+                                                    No ads
+                                                </li>
+                                                <li class="mb-2">
+                                                    A special badge on your name
+                                                </li>
+                                                <li class="mb-2">
+                                                    A personal thank you letter from our staff
+                                                </li>
+                                            </ul>
+                                            <div class="mt-auto">
+                                                @{
+                                                    if (membership == "MembershipPlus")
+                                                    {
+
+                                                        if (isActive == "MembershipActive")
+                                                        {
+                                                            <a id="btnSubscribe-DeactivateMonthly" asp-controller="Subscriptions" asp-action="Deactivate"  asp-route-Billing="@ViewData["MonthlyBilling"]" class="btn btn-lg btn-secondary">Deactivate</a>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="btnSubscribe-ReactivateMonthly" asp-controller="Subscriptions" asp-action="Reactivate" asp-route-Billing="@ViewData["MonthlyBilling"]" class="btn btn-lg btn-secondary">Reactivate</a>
+                                                        }
+                                                    }
+                                                    else if (membership == "Membership")
+                                                    {
+
+                                                        <a asp-controller="Subscriptions" asp-action="Details" asp-route-Code="@ViewData["MembershipPlus"]" asp-route-BillingType="@ViewData["MonthlyBilling"]" id="btnSubscribe-PurchaseMembershipMonthly" class="btn btn-block btn-primary">Purchase</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="btnSubscribe-Register" asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg btn-secondary">Sign up for free</a>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="annual">
+                            <div class="row py-4">
+                                <div class="col-sm-4 mb-3 mb-md-0">
+                                    <div class="card text-center h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="mb-4">
+                                                <h5>Basic</h5>
+                                                <span class="display-4">$0</span>
+                                            </div>
+                                            <h6>Includes:</h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    Basic access to our games
+                                                </li>
+                                                <li class="mb-2">
+                                                    No highscore access
+                                                </li>
+                                                <li class="mb-2">
+                                                    No customizable profile
+                                                </li>
+                                                <li class="mb-2">
+                                                    No achievements
+                                                </li>
+                                                <li class="mb-2">
+                                                    No stats
+                                                </li>
+                                            </ul>
+                                            <div class="mt-auto">
+                                                @{
+                                                    if (membership == "None")
+                                                    {
+                                                        <p id="txtSubscribe-CurrentMembership" class="btn btn-lg btn-outline-primary text-muted">Current membership</p>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-md-0">
+                                    <div class="card text-center h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="mb-4">
+                                                <h5>Membership</h5>
+                                                <span class="display-4">$0</span>
+                                                <span class="mb-2">(Requires login)</span>
+                                            </div>
+                                            <h6>Includes:</h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    Access to our games
+                                                </li>
+                                                <li class="mb-2">
+                                                    1 week early access to new games
+                                                </li>
+                                                <li class="mb-2">
+                                                    Highscores
+                                                </li>
+                                                <li class="mb-2">
+                                                    A customizable profile
+                                                </li>
+                                                <li class="mb-2">
+                                                    Achievements
+                                                </li>
+                                                <li class="mb-2">
+                                                    Basic stats on your performance
+                                                </li>
+                                            </ul>
+                                            <div class="mt-auto">
+                                                @{
+                                                    if (membership == "None")
+                                                    {
+                                                        <a id="btnSubscribe-Register" asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg btn-primary">Sign up for free</a>
+                                                    }
+                                                    else if (membership == "Membership")
+                                                    {
+                                                        <p id="txtSubscribe-CurrentMembership" class="btn btn-lg btn-outline-primary text-muted">Current membership</p>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-md-0">
+                                    <div class="card text-center h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="mb-4">
+                                                <h5>Membership+</h5>
+                                                <span class="display-4">$120</span>
+                                                <span>/year</span>
+                                            </div>
+                                            <h6>Includes:</h6>
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2">
+                                                    Access to our games
+                                                </li>
+                                                <li class="mb-2">
+                                                    2 week early access to new games
+                                                </li>
+                                                <li class="mb-2">
+                                                    Exclusive games
+                                                </li>
+                                                <li class="mb-2">
+                                                    Highscores
+                                                </li>
+                                                <li class="mb-2">
+                                                    A customizable profile with additional features
+                                                </li>
+                                                <li class="mb-2">
+                                                    Achievements
+                                                </li>
+                                                <li class="mb-2">
+                                                    Enhanced stats on your performance
+                                                </li>
+                                                <li class="mb-2">
+                                                    No ads
+                                                </li>
+                                                <li class="mb-2">
+                                                    A special badge on your name
+                                                </li>
+                                                <li class="mb-2">
+                                                    A personal thank you letter from our staff
+                                                </li>
+                                            </ul>
+                                            <div class="mt-auto">
+                                                @{
+                                                    if (membership == "MembershipPlus")
+                                                    {
+
+                                                        if (isActive == "MembershipActive")
+                                                        {
+                                                            <a id="btnSubscribe-DeactivateYearly" asp-controller="Subscriptions" asp-action="Deactivate" asp-route-Billing="@ViewData["AnnualBilling"]" class="btn btn-lg btn-secondary">Deactivate</a>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="btnSubscribe-ReactivateYearly" asp-controller="Subscriptions" asp-action="Reactivate" asp-route-Billing="@ViewData["AnnualBilling"]" class="btn btn-lg btn-secondary">Reactivate</a>
+                                                        }
+                                                       
+                                                    }
+                                                    else if (membership == "Membership")
+                                                    {
+                                                        <a asp-controller="Subscriptions" asp-action="Details" asp-route-Code="@ViewData["MembershipPlus"]" asp-route-BillingType="@ViewData["AnnualBilling"]" id="btnSubscribe-PurchaseMembershipAnnual" class="btn btn-block btn-primary">Purchase</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="btnSubscribe-Register" asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg btn-secondary">Sign up for free</a>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="text-center my-4">
+                        <h2>Frequently asked questions</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6 ml-auto">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="h6 card-title">Do I need a credit card to sign up?</h5>
+                                    <p class="mb-0">
+                                        You do not need a credit card to sign up and create a Brain Builder account. A credit card is only required when purchasing a Membership Plus account.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-6 mr-auto">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="h6 card-title">What is a Membership Plus account?</h5>
+                                    <p class="mb-0">
+                                        A Membership Plus account is a paid subscription which gives users access to additional features that will enhance your brain building experience.
+                                        From access to additional games and additional stats, this account is intended for users who want to improve their memory further.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-6 ml-auto">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="h6 card-title">What if I decide to cancel my subscripton?</h5>
+                                    <p class="mb-0">
+                                        If you cancel your subscription, your subscription will be considered inactive. You will not be billed if you have already paid this month's subscription,
+                                        until you reactivate the subscription.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-6 mr-auto">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="h6 card-title">Can I cancel at anytime?</h5>
+                                    <p class="mb-0">
+                                        Yes you can. To cancel your subscription, go on the subscription page, then press the Deactivate button then confirm the deactivation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

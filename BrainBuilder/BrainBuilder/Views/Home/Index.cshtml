@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    bool isLoggedIn = (bool)ViewData["isLoggedIn"];
+}
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        @if (!isLoggedIn)
+        {
+            <div class="container">
+                <h1 class="masthead-heading mb-0">Brain Exercises Done Simple</h1>
+                <h2 class="masthead-subheading mb-0">Simple. Engaging. Relaxing.</h2>
+                <a id="btnRegister" asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-xl rounded-pill mt-5">Sign up for free</a>
+            </div>
+        }
+        else
+        {
+            <div class="container">
+                <h1 class="masthead-heading mb-0">Welcome back, @ViewData["userName"]!</h1>
+                <h2 class="masthead-subheading mb-0">Ready to build your brain?</h2>
+                <a asp-action="Index" id="btnGames" asp-controller="Games" class="btn btn-primary btn-xl rounded-pill mt-5">View Games</a>
+            </div>
+        }
+
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Keeping Games Simple</h2>
+                    <p>Brain Builder's games are designed with simplicity in mind. Quick to pick up, hard to put down.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="img/02.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <h2 class="display-4">Data to Keep You Going</h2>
+                    <p>Every successful play session, you can send your data where it will saved and processed to see 
+                    how your performance is and how you compared to the others.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="img/03.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Wanna Go Further?</h2>
+                    <p>Brain Builder offers a paid subscription with additional benefits. From exclusive games, more stats and no ads.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

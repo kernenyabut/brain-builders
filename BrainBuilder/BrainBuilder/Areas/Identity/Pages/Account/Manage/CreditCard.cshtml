@@ -1,0 +1,131 @@
+﻿@page
+@model CreditCardModel
+@{
+    ViewData["Title"] = "Credit Card";
+    ViewData["ActivePage"] = ManageNavPages.CreditCard;
+}
+<partial name="_StatusMessage" for="StatusMessage" />
+<h4>@ViewData["Title"]</h4>
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create" id="frmRegister" onsubmit="return DSValidation();">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div id="formcontainer">
+                <div class="row">
+                    <div class="form-group floatLeft col-md-4">
+                        <label asp-for="Input.CardCode" class="control-label"></label>
+                        <select asp-for="Input.CardCode" id="optCardCode" class="form-control" asp-items="ViewBag.CardType"></select>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <label asp-for="Input.CardNumber" class="control-label"></label>
+                        <input asp-for="Input.CardNumber" id="txtCardNumber" class="form-control" />
+                        <span id="txtCardNumber-error" asp-validation-for="Input.CardNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label asp-for="Input.SecurityCode" class="control-label"></label>
+                        <input asp-for="Input.SecurityCode" id="txtSecurityCode" maxlength="3" class="form-control" placeholder="000" />
+                        <span id="txtSecurityCode-error" asp-validation-for="Input.SecurityCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <label asp-for="Input.ExpiryYear" class="control-label"></label>
+                <div class="row">
+                    <div class="form-group  col-md-2">
+                        <select asp-for="Input.ExpiryMonth" id="optExpiryMonth" class="form-control" asp-items="ViewBag.Months"></select>
+
+                    </div>
+
+                    <div class="form-group  col-md-2">
+                        <select asp-for="Input.ExpiryYear" id="optExpiryYear" class="form-control" asp-items="ViewBag.Years"></select>
+                    </div>
+                </div>
+                <span id="dateExpiryDate-error" asp-validation-for="Input.ExpiryYear" class="text-danger"></span>
+            </div>
+
+            <hr />
+
+            <div class="container">
+                <div class="row">
+                    <div class="form-group floatLeft col-md-6">
+                        <label asp-for="Input.FirstName" class="control-label"></label>
+                        <input asp-for="Input.FirstName" id="txtFirstName" class="form-control" />
+                        <span id="txtFirstName-error" asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group floatRight col-md-6">
+                        <label asp-for="Input.LastName" class="control-label"></label>
+                        <input asp-for="Input.LastName" id="txtLastName" class="form-control" />
+                        <span id="txtLastName-error" asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="form-group floatLeft col-md-6">
+                        <label asp-for="Input.Address" class="control-label"></label>
+                        <input asp-for="Input.Address" id="txtAddress" class="form-control" />
+                        <span id="txtAddress-error" asp-validation-for="Input.Address" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group floatRight col-md-6">
+                        <label asp-for="Input.Address2" class="control-label"></label>
+                        <input asp-for="Input.Address2" id="txtAddress2" class="form-control" />
+                        <span id="txtAddress2-error" asp-validation-for="Input.Address2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div id="ProvinceDiv" class="form-group floatRight col-md-6">
+                        <label asp-for="Input.Province" class="control-label"></label>
+                        <select id="ProvinceDropDown" asp-for="Input.Province" class="form-control" asp-items="ViewBag.Provinces"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="form-group floatLeft col-md-6">
+                        <label asp-for="Input.City" class="control-label"></label>
+                        <input asp-for="Input.City" id="txtCity" class="form-control" />
+                        <span id="txtCity-error" asp-validation-for="Input.City" class="text-danger"></span>
+                    </div>
+
+                    <div id="PostalDiv" class="form-group floatRight col-md-3">
+                        <label asp-for="Input.PostalCode" class="control-label"></label>
+                        <input asp-for="Input.PostalCode" id="txtPostalCode" class="form-control" />
+                        <span id="txtPostalCode-error" asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="form-group floatRight col-md-6">
+                        <label asp-for="Input.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Input.PhoneNumber" id="txtPhoneNumber" class="form-control" />
+                        <span id="txtPhoneNumber-error" asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="reset" id="btnResetCard" value="Reset Card" class="btn btn-secondary" />
+                <input type="submit" id="btnSubmitCard" value="Add Card" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/DSCreditCardValidation.js" type="text/javascript"></script>  
+    <partial name="_ValidationScriptsPartial" />
+}

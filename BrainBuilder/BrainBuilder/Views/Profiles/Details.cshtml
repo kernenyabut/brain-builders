@@ -1,0 +1,160 @@
+﻿@model BrainBuilder.Models.Profiles
+@using Microsoft.AspNetCore.Identity
+@{
+    string avatarLink = "https://avatars.dicebear.com/api/identicon/" + ViewData["Avatar"] + ".svg";
+    ViewData["Title"] = ViewData["Name"] + "'s Profile";
+    string membership = ViewData["subscription"].ToString();
+    string isActive = ViewData["isActive"].ToString();
+    bool hasAchievements = (bool) ViewData["achievements"];
+}
+
+<header class="py-5"></header>
+<section>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div id="cardProfileHeader" class="profileCard">
+                    <div class="profileCard-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="@avatarLink" alt="@Html.DisplayFor(model => model.DisplayName)" class="rounded profilePicture" width="150">
+                            <div class="mt-3">
+                                @if (membership == "MembershipPlus")
+                                {
+                                    if (isActive == "T")
+                                    {
+                                        <img id="imgMembershipPlusBadge" src="~/img/vip.png" alt="Membership+ Activated" width="25">
+                                    }
+                                    else
+                                    {
+                                        <img id="imgMembershipPlusBadgeInactive" class="subscriptionInactive" src="~/img/vip.png" alt="Membership+ Activated" width="25">
+                                    }
+
+                                }
+                                <h4 id="lblName">@Html.DisplayFor(model => model.DisplayName)</h4>
+                                <p id="lblMotto" class="text-muted font-size-sm">@Html.DisplayFor(model => model.Motto)</p>
+                                @if (User.Identity.Name == ViewData["Name"].ToString())
+                                {
+                                    <a asp-action="Edit" id="btnEditProfile" asp-controller="Profiles" asp-route-id="@Model.Id" class="btn btn-secondary">Edit Profile</a>
+                                    <a class="btn btn-primary" id="btnManageUser" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile Settings</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="cardAchievements "class="profileCard mt-3">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <div class="mt-3">
+                            <h2>Achievements</h2>
+                        </div>
+                        <hr />
+                        @if (hasAchievements == true)
+                        {
+                            <ul class="list-group list-group-flush">
+                                You have completed a game.
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="list-group list-group-flush">
+                                You have not completed a game.
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="cardProfileInformation" class="profileCard mb-3">
+                    <div class="profileCard-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Nickname</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Html.DisplayFor(model => model.DisplayName)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Bio</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Html.DisplayFor(model => model.Bio)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Html.DisplayFor(model => model.IdNavigation.Email)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Province</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Html.DisplayFor(model => model.ProvinceCodeNavigation.ProvinceName)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Age</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @ViewData["age"]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="profileCard mb-3">
+                        <div class="profileCard-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Nickname</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.DisplayName)
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Bio</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.Bio)
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.IdNavigation.Email)
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Province</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.ProvinceCodeNavigation.ProvinceName)
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

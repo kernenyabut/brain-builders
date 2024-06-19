@@ -1,0 +1,345 @@
+﻿@model BrainBuilder.Models.GameStats
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Stats";
+
+    //Overall
+    int[] overallMatchingScores = (int[])ViewData["matchingOverallScores"];
+    int[] overallMatchingMoves = (int[])ViewData["matchingOverallMoves"];
+    int[] overallMatchingTimes = (int[])ViewData["matchingOverallTime"];
+
+    //Personal
+    int[] scores = (int[])ViewData["matchingScores"];
+    int[] movesTaken = (int[])ViewData["matchingMoves"];
+    int[] timesTaken = (int[])ViewData["matchingTime"];
+
+    //Dates
+    string[] dates = (string[])ViewData["matchingDates"];
+
+    //Favourite games
+    string[] gameNames = (string[])ViewData["gameNames"];
+    int[] timesPlayed = (int[])ViewData["timesPlayed"];
+
+    bool statsExist = (bool)ViewData["statsExist"];
+    bool isActive = (bool)ViewData["isActive"];
+    bool matchingStatsExist = (bool)ViewData["matchingStatsExist"];
+}
+
+
+<header class="py-5"></header>
+<section>
+    <div class="container">
+        @if (statsExist)
+        {
+            <h3 id="txtOverallStats">Overall Stats</h3>
+            <div id="cardOverall" class="d-md-flex justify-content-between card col-10">
+                <div class="px-3 my-3 text-center">
+                    <div id="drawFavouriteGameChart" style="border: 1px solid #ccc"></div>
+                </div>
+            </div>
+            <br />
+            @if (matchingStatsExist)
+            {
+                <h3>Matching Stats</h3>
+                <div id="cardMatchingStats1" class="d-md-flex justify-content-between card col-10">
+
+                    <div class="px-3 my-3 text-center">
+                        <div id="chartFinalScore" style="border: 1px solid #ccc"></div>
+                    </div>
+                    <div class="px-3 my-3 text-center">
+                        <div id="chartTimeTaken" style="border: 1px solid #ccc"></div>
+                    </div>
+
+                </div>
+                <div id="cardMatchingStats2" class="d-md-flex justify-content-between card col-10">
+
+                    <div class="px-3 my-3 text-center">
+                        <div id="chartMovesTaken" style="border: 1px solid #ccc"></div>
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+                    <div id="cardPersonalStats" class="profileCard mt-3 col-4">
+                        <div class="d-flex flex-column align-items-lg-start text-left">
+                            <div class="mt-3">
+                                <h2>Overall Stats - Matching</h2>
+                            </div>
+                            <hr />
+                            <div class="px-3 my-3">
+                                <span class="text-left">
+                                    <b>Average Score</b>
+                                </span>
+                                <br />
+                                <span class="text-right text-xl font-weight-medium">@Math.Round(scores.Average(), 2)</span>
+                            </div>
+                            <div class="px-3 my-3">
+                                <span class="text-left">
+                                    <b>Average Time Taken</b>
+                                </span>
+                                <br />
+                                <span class="text-right text-xl font-weight-medium">@Math.Round(timesTaken.Average(), 2) seconds</span>
+                            </div>
+                            <div class="px-3 my-3">
+                                <span class="text-left">
+                                    <b>Average Moves</b>
+                                </span>
+                                <br />
+                                <span class="text-right text-xl font-weight-medium">@Math.Round(movesTaken.Average(), 2)</span>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    @if (isActive)
+                    {
+                        <div id="cardGlobalStats" class="profileCard mt-3 col-6">
+                            <div class="d-flex flex-column align-items-lg-start text-left">
+                                <div class="mt-3">
+                                    <h2>Matching - How the others compare?</h2>
+                                </div>
+                                <hr />
+                                <div class="px-3 my-3">
+                                    <span class="text-left">
+                                        <b>Average Score</b>
+                                    </span>
+                                    <br />
+                                    <span class="text-right text-xl font-weight-medium">@Math.Round(overallMatchingScores.Average(), 2)</span>
+                                </div>
+                                <div class="px-3 my-3">
+                                    <span class="text-left">
+                                        <b>Average Time Taken</b>
+                                    </span>
+                                    <br />
+                                    <span class="text-right text-xl font-weight-medium">@Math.Round(overallMatchingTimes.Average(), 2) seconds</span>
+                                </div>
+                                <div class="px-3 my-3">
+                                    <span class="text-left">
+                                        <b>Average Moves</b>
+                                    </span>
+                                    <br />
+                                    <span class="text-right text-xl font-weight-medium">@Math.Round(overallMatchingMoves.Average(), 2)</span>
+                                </div>
+
+                                <hr>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="cardGlobalStats" class="profileCard mt-3 col-6">
+                            <div class="d-flex flex-column align-items-lg-start text-left">
+                                <div class="mt-3">
+                                    <h2>Matching - How the others compare?</h2>
+                                </div>
+                                <hr />
+
+                                <div class="px-3 my-3">
+                                    <span class="text-left">
+                                        <b>Update your stats to see more in-depth stats</b>
+                                    </span>
+                                </div>
+
+                                <hr>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            }
+
+        }
+        else
+        {
+            <div id="card-noStats" class="d-md-flex justify-content-between cart-item">
+                <h3 id="txtNoStats">You have not played any games to see any stats</h3>
+            </div>
+            <hr class="my-2">
+            <div class="row ">
+                <div class=""><a class="btn btn-style-1 btn-secondary btn-block" asp-action="Index" id="btnGames" asp-controller="Games">View Games</a></div>
+            </div>
+        }
+
+    </div>
+</section>
+@section Scripts {
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        //If there are no stats
+        var statsExist = @Html.Raw(Json.Serialize(ViewData["statsExist"]));
+        if (statsExist == true) {
+            // Load Charts and the corechart package.
+            google.charts.load("current", { packages: ["corechart"] });
+
+            // Draw the chart for user's final scores on matching
+            google.charts.setOnLoadCallback(drawFinalScoreChart);
+
+            // Draw the chart for user's final moves on matching
+            google.charts.setOnLoadCallback(drawMovesTakenChart);
+
+            // Draw the chart for user's final time on matching
+            google.charts.setOnLoadCallback(drawTimeTakenChart);
+
+            // Draw the chart for user's games played
+            google.charts.setOnLoadCallback(drawFavouriteGameChart);
+
+            // Callback that draws the pie chart for final scores on matching
+            function drawFinalScoreChart() {
+                var scores = @Html.Raw(Json.Serialize(ViewData["matchingScores"]));
+                var dates = @Html.Raw(Json.Serialize(ViewData["matchingDates"]));
+
+                var sessionsLength = scores.length;
+
+                //If the user has played for more than 5 sessions
+                if (scores.length > 5) {
+                    sessionsLength = 5;
+                }
+
+                // Create the data table 
+                var data = new google.visualization.DataTable();
+                data.addColumn("string", "Date");
+                data.addColumn("number", "Score");
+                for (var i = 0; i < sessionsLength; i++) {
+                    data.addRows([
+                        [dates[i], scores[i]]
+                    ])
+                }
+
+                // Set options 
+                var options = {
+                    title: "Final Scores Over 5 Sessions",
+                    width: 600,
+                    height: 300,
+                    hAxis: {
+                        title: "Final Score",
+                        minValue: 0
+                    },
+                    vAxis: {
+                        title: "Dates"
+                    }
+                };
+
+                // Instantiate and draw the chart 
+                var chart = new google.visualization.BarChart(
+                    document.getElementById("chartFinalScore")
+                );
+                chart.draw(data, options);
+            }
+
+
+            // Callback that draws the pie chart for moves taken on matching
+            function drawMovesTakenChart() {
+                var moves = @Html.Raw(Json.Serialize(ViewData["matchingMoves"]));
+                var dates = @Html.Raw(Json.Serialize(ViewData["matchingDates"]));
+
+                var sessionsLength = moves.length;
+
+                //If the user has played for more than 5 sessions
+                if (moves.length > 5) {
+                    sessionsLength = 5;
+                }
+
+                // Create the data table 
+                var data = new google.visualization.DataTable();
+                data.addColumn("string", "Date");
+                data.addColumn("number", "Moves Taken");
+                for (var i = sessionsLength; i >= 0; i--) {
+                    data.addRows([
+                        [dates[i], moves[i]]
+                    ])
+                }
+
+                // Set options 
+                var options = {
+                    title: "Moves Taken Over 5 Sessions",
+                    width: 600,
+                    height: 300,
+                    hAxis: {
+                        title: "Moves Taken",
+                        minValue: 0
+                    },
+                    vAxis: {
+                        title: "Moves"
+                    }
+                };
+
+                // Instantiate and draw the chart 
+                var chart = new google.visualization.LineChart(
+                    document.getElementById("chartMovesTaken")
+                );
+                chart.draw(data, options);
+            }
+
+            // Callback that draws the pie chart for time taken on matching
+            function drawTimeTakenChart() {
+                var timeTaken = @Html.Raw(Json.Serialize(ViewData["matchingTime"]));
+                var dates = @Html.Raw(Json.Serialize(ViewData["matchingDates"]));
+
+                var sessionsLength = timeTaken.length;
+
+                //If the user has played for more than 5 sessions
+                if (timeTaken.length > 5) {
+                    sessionsLength = 5;
+                }
+
+                // Create the data table 
+                var data = new google.visualization.DataTable();
+                data.addColumn("string", "Date");
+                data.addColumn("number", "Time Taken");
+                for (var i = sessionsLength; i >= 0; i--) {
+                    data.addRows([
+                        [dates[i], timeTaken[i]]
+                    ])
+                }
+
+                // Set options 
+                var options = {
+                    title: "Time Taken Over 5 Sessions",
+                    width: 600,
+                    height: 300,
+                    hAxis: {
+                        title: "Time Taken",
+                        minValue: 0
+                    },
+                    vAxis: {
+                        title: "Time (Seconds)"
+                    }
+                };
+
+                // Instantiate and draw the chart 
+                var chart = new google.visualization.LineChart(
+                    document.getElementById("chartTimeTaken")
+                );
+                chart.draw(data, options);
+            }
+
+            // Callback that draws the games played
+            function drawFavouriteGameChart() {
+                var gameNames = @Html.Raw(Json.Serialize(ViewData["gameNames"]));
+                var timesPlayed = @Html.Raw(Json.Serialize(ViewData["timesPlayed"]));
+
+                // Create the data table for games played
+                var data = new google.visualization.DataTable();
+                data.addColumn("string", "Game Name");
+                data.addColumn("number", "Times Played");
+                for (var i = 0; i < gameNames.length; i++) {
+                    data.addRows([
+                        [gameNames[i], timesPlayed[i]]
+                    ])
+                }
+
+                // Set options
+                var options = {
+                    title: "Your Favourite Games",
+                    width: 400,
+                    height: 300
+                };
+
+                // Instantiate and draw the chart
+                var chart = new google.visualization.PieChart(
+                    document.getElementById("drawFavouriteGameChart")
+                );
+                chart.draw(data, options);
+            }
+        }
+
+    </script>
+}

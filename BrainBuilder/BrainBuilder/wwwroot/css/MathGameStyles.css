@@ -1,0 +1,42 @@
+﻿body {
+    font-size: 20px;
+}
+
+#gameContainer {
+    
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 25%;
+    width: 80%;
+}
+
+.mathGame {
+    padding-top: 150px;
+    width: 80%;
+}
+
+#game {
+    float: left;
+    width: 300px;
+}
+
+#gameSidebar {
+    float: left;
+    width: 200px;
+    font-size: 25px;
+}
+
+input {
+    font-size: 32px;
+}
+
+.gamePiece {
+    float: left;
+    width: 75px;
+    height: 60px;
+}
+
+.gameBtn {
+    margin: 5px 5px 5px 5px;
+}
